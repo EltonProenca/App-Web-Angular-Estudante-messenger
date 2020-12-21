@@ -1,0 +1,20 @@
+   <div>
+
+      <mat-card lines color="transparent" *ngIf="user; else titleTemplate">
+
+      <ngx-avatar [src]="user.photo || 'assets/images/no-photo.jpg'" [round]="true" item-start>
+
+      </ngx-avatar>
+
+      {{ title }}
+    </mat-card>
+
+    <ng-template #titleTemplate>
+      {{ title }}
+    </ng-template>
+
+
+
+
+
+      </div>

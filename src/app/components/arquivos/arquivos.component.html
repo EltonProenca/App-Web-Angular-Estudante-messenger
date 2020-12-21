@@ -1,0 +1,67 @@
+<p>
+  <div style="background-color:#e2eff7; width: 100%; height: 150%; text-align: center; margin-top:70px;">
+    <!--<img class="logo" src="../assets/img/Login.jpg" /></div><br>-->
+  <div><h2>Disciplina 1</h2>
+    <div style="text-align:center">
+      <ul class="nav">
+        <li>
+          <a>Arquivo para Enviar</a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div *ngIf="currentUpload">
+      <div class="progress">
+        <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+      </div>
+     <Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete >
+    </div>
+
+
+    <label color="primary">
+           <input type="file" (change)="detectFiles($event)">
+        </label>
+
+
+
+        <button ion-button color="secondary" round block
+         [disabled]="!selectedFiles"
+         (click)="uploadSingle()">
+         Enviar Arquivo</button>
+
+        <label>
+           <input type="file" (change)="detectFiles($event)" multiple>
+        </label>
+
+          <button
+                  [disabled]="!selectedFiles"
+                  (click)="uploadMulti()">
+
+            UPLOAD Multiple
+          </button>
+
+
+
+          <form [formGroup]="fileForm" (ngSubmit)="uploadSingle()">
+
+
+            <label color="primary">
+                  <input type="file" (change)="detectFiles($event)">
+                  </label>
+
+
+
+          <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Comentário" formControlName="comentario" >
+          </div>
+
+
+
+
+
+
+
+         <button type="submit" class="btn btn-lg btn-success" [disabled]="fileForm.invalid && !selectedFiles">Cadastrar</button>
+
+        </form>

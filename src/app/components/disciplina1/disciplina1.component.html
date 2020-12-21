@@ -1,0 +1,87 @@
+<p>
+<div style="background-color:#e2eff7; width: 100%; text-align: center; margin-top:70px;">
+<img class="logo" style="background:  #e2eff7; width: 30%;"  src="../assets/img/Login.jpg" /></div>
+<br>
+<div><h2>{{Materia}}</h2>
+  <div>
+      <div *ngIf="currentUpload">
+          <div class="progress">
+            <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+          </div>
+          <Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete >
+        </div>
+
+      <form [formGroup]="fileForm" (ngSubmit)="uploadSingle()">
+        <label color="primary"><input type="file" (change)="detectFiles($event)"></label>
+        <div class="form-group">
+          <input type="text" class="form-control"  placeholder="Comentário" formControlName="comentario" >
+        </div>
+        <button type="submit" class="btn btn-lg btn-success" [disabled]="fileForm.invalid || !selectedFiles">Cadastrar</button>
+      </form>
+      <br>
+  </div>
+    <div class="card" style="background: #e2eff7">
+    <div style="text-align:center">
+      <ul class="nav">
+        <li>
+          <span><h5> Arquivos Enviados</h5></span>
+        </li>
+      </ul>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align:center">Arquivos</th>
+          <th scope="col" style="text-align:center">Comentário</th>
+          <th scope="col" style="text-align:center">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let arquivo of arquivosEnviados | async">
+          <td style="text-align:center">{{arquivo.name}}</td>
+          <td style="text-align:center">{{arquivo.comentario}}</td>
+          <td style="text-align:center">
+              <button  type="button" class="btn btn-success" (click)=" baixarArquivo(arquivo)">Baixar</button>
+              <button type="button" class="btn btn-warning" (click)="editProject(arquivo)">Editar</button>
+              <button type="button" class="btn btn-danger" (click)="confirmacaoDelete(arquivo)"> Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <br>
+    <div class="card" style="background: #e2eff7">
+    <div style="text-align:center">
+      <ul class="nav">
+        <li>
+         <span><h5> Arquivos Recebidos</h5></span>
+        </li>
+      </ul>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align:center">Arquivos</th>
+          <th scope="col" style="text-align:center">Usuário</th>
+          <th scope="col" style="text-align:center">Comentário</th>
+          <th scope="col" style="text-align:center">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let arquivo of arquivosRecebidos | async">
+          <td style="text-align:center">{{arquivo.name}}</td>
+          <td style="text-align:center">{{arquivo.user}}</td>
+          <td style="text-align:center">{{arquivo.comentario}}</td>
+          <td style="text-align:center" >
+              <button  type="button" class="btn btn-success" (click)=" baixarArquivoProf(arquivo)">baixar
+
+                </button>
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<p>
+  <div class="row" *ngIf="isSearching">
+    <div class="col-12 text-center">
+        <h4>Searching ... </h4>
+    </div>
+</div>
+<div style="background-color:#e2eff7; width: 100%; height: 150%; text-align: center; margin-top:70px;">
+<div><h2>Mensagens</h2>
+  <div style="text-align:center">
+<mat-card style="background-color:#e68708 ;">
+<div [ngSwitch]="view">
+  <mat-card style="background-color:#e2eff7 ;"><b style="color: black;">Usuários</b>
+  <mat-list  no-lines>
+    <button  *ngFor="let user of users | async" (click)="onChatCreate(user)" (click)="goToChat(user)">
+      <a [routerLink]="['chat/chat']"></a>
+        <ngx-avatar  start [src]="user.photo || 'assets/images/no-photo.jpg'"  [round]="true"></ngx-avatar>      {{ user.name }}
+    </button>
+  </mat-list>
+</mat-card>
+<mat-card style="background-color:#e2eff7 ;"><b style="color: black;">Conversas</b>
+    <mat-list *ngSwitchCase="'chats'" no-lines>
+      <button ion-item *ngFor="let chat of chats | async" (click)="onChatOpen(chat)"  (click)="goToChat(chat)">
+      <ngx-avatar [src]="chat.photo || 'assets/images/no-photo.jpg'"  [round]="true"></ngx-avatar>
+        <h2>{{ chat.title }}</h2>
+        <p *ngIf="chat.lastMessage; else customMessage">{{ chat.timestamp | date:'dd/MM/y H:mm' }} - {{ chat.lastMessage }}</p>
+        <ng-template #customMessage>
+          <p>No messages</p>
+        </ng-template>
+      </button>
+    </mat-list>
+  </mat-card>
+</div>
+</mat-card>
+</div>
+</div>
+</div>
+
+
+
+

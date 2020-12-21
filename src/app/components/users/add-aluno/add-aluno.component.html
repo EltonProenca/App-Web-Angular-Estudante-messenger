@@ -1,0 +1,248 @@
+<section id="login" class="mb-5 mt-5">
+  <div class="container">
+    <div  >
+      <div >
+        <div  >
+          <div class="card" style="background: #e2eff7">
+            <div class="card-body text-center">
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+                  <div style="background:  #e2eff7;">
+                      <img style="background:  #e2eff7; width: 30%;" src="../assets/img/Login.jpg"/>
+                    </div><br>
+                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError" style="color:white">Cadastrar Alunos</h1>
+                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                  Something is wrong!
+                </div>
+                <fieldset disabled>
+
+                      <div class="form-group">
+                        <label for="typeInput">Tipo do usuário</label>
+                        <input type="text" id="typeInput" class="form-control" placeholder="Aluno" formControlName="usuario" value="aluno">
+                      </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="selectPeriod">Curso</label>
+                    <select class="form-control" id="selectCurso" formControlName="curso">
+                      <option value="Administração">Administração</option>
+                      <option value="Análise e desenvolvimento de sistemas">Análise e desenvolvimento de sistemas</option>
+                      <option value="Ciências Biológicas">Ciências Biológicas</option>
+                      <option value="Educação Física Bacharelado">Educação Física Bacharelado</option>
+                      <option value="Emfermagem">Enfermagem</option>
+                      <option value="Estética e Cosmética">Estética e Cosmética</option>
+                      <option value="Farmácia">Farmácia</option>
+                      <option value="Fisioterapia">Fisioterapia</option>
+                      <option value="Gastronomia">Gastronomia</option>
+                      <option value="Matemática">Matemática</option>
+                      <option value="Odontologia">Odontologia</option>
+                      <option value="Psicologia">Psicologia</option>
+                      <option value="Pedagogia">Pedagogia</option>
+                      <option value="Redes de Computadores">Redes de Computadores</option>
+                      <option value="Serviço Soc">Serviço Social</option>
+                      <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+                    </select>
+                  </div>
+                <div class="form-group">
+                  <input type="text" class="form-control"   placeholder="Name" formControlName="name">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control"  placeholder="RA" formControlName="ra" >
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control"  placeholder="Email" formControlName="email" required>
+                </div>
+
+                <div class="row">
+                 <div class="col-md-3" >
+                    <label for="curso" class="control-label">curso</label>
+                    <select class="form-control" id="selectCurso0" formControlName="Curso0">
+                      <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3" >
+                     <label for="curso" class="control-label">Período</label>
+                     <select class="form-control" id="SelectPeriodo0" formControlName="Periodo0">
+                      <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                      </select>
+                   </div>
+                  <div class="col-md-3" >
+                      <label for="curso" class="control-label">Disciplina</label>
+                      <select class="form-control" id="selectMateria0" formControlName="Materia0">
+                      <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <label for="curso" class="control-label">Professor</label>
+                       <select class="form-control" id="selectpathProfMateria0" formControlName="pathProfMateria0">
+                       <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                       </select>
+                  </div>
+                </div>
+                <div class="row">
+                 <div class="col-md-3" >
+                    <select class="form-control" id="selectCurso1" formControlName="Curso1">
+                      <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3" >
+                      <select class="form-control" id="SelectPeriodo1" formControlName="Periodo1">
+                      <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                      </select>
+                   </div>
+                  <div class="col-md-3" >
+                      <select class="form-control" id="selectMateria1" formControlName="Materia1">
+                      <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="selectpathProfMateria1" formControlName="pathProfMateria1">
+                       <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                       </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3" >
+                     <select class="form-control" id="selectCurso2" formControlName="Curso2">
+                       <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                     </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="SelectPeriodo2" formControlName="Periodo2">
+                       <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                       </select>
+                    </div>
+                   <div class="col-md-3" >
+                       <select class="form-control" id="selectMateria2" formControlName="Materia2">
+                       <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                       </select>
+                   </div>
+                   <div class="col-md-3" >
+                        <select class="form-control" id="selectpathProfMateria2" formControlName="pathProfMateria2">
+                        <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                        </select>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-md-3" >
+                     <select class="form-control" id="selectCurso3" formControlName="Curso3">
+                       <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                     </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="SelectPeriodo3" formControlName="Periodo3">
+                       <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                       </select>
+                    </div>
+                   <div class="col-md-3" >
+                       <select class="form-control" id="selectMateria3" formControlName="Materia3">
+                       <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                       </select>
+                   </div>
+                   <div class="col-md-3" >
+                        <select class="form-control" id="selectpathProfMateria3" formControlName="pathProfMateria3">
+                        <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                        </select>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-md-3" >
+                     <select class="form-control" id="selectCurso4" formControlName="Curso4">
+                       <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                     </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="SelectPeriodo4" formControlName="Periodo4">
+                       <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                       </select>
+                    </div>
+                   <div class="col-md-3" >
+                       <select class="form-control" id="selectMateria4" formControlName="Materia4">
+                       <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                       </select>
+                   </div>
+                   <div class="col-md-3" >
+                        <select class="form-control" id="selectpathProfMateria4" formControlName="pathProfMateria4">
+                        <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                        </select>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-md-3" >
+                     <select class="form-control" id="selectCurso5" formControlName="Curso5">
+                       <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                     </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="SelectPeriodo5" formControlName="Periodo5">
+                       <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                       </select>
+                    </div>
+                   <div class="col-md-3" >
+                       <select class="form-control" id="selectMateria5" formControlName="Materia5">
+                       <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                       </select>
+                   </div>
+                   <div class="col-md-3" >
+                        <select class="form-control" id="selectpathProfMateria5" formControlName="pathProfMateria5">
+                        <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                        </select>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-md-3" >
+                     <select class="form-control" id="selectCurso6" formControlName="Curso6">
+                       <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                     </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="SelectPeriodo6" formControlName="Periodo6">
+                       <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                       </select>
+                    </div>
+                   <div class="col-md-3" >
+                       <select class="form-control" id="selectMateria6" formControlName="Materia6">
+                       <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+                       </select>
+                   </div>
+                   <div class="col-md-3" >
+                        <select class="form-control" id="selectpathProfMateria6" formControlName="pathProfMateria6">
+                        <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                        </select>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <div class="col-md-3" >
+                     <select class="form-control" id="selectCurso7" formControlName="Curso7">
+                       <option *ngFor="let path of paths | async" [value]="path.curso">{{ path.curso }}</option>
+                     </select>
+                  </div>
+                  <div class="col-md-3" >
+                       <select class="form-control" id="SelectPeriodo7" formControlName="Periodo7">
+                       <option *ngFor="let path of paths | async" [value]="path.periodo">{{ path.periodo }}</option>
+                       </select>
+                    </div>
+                   <div class="col-md-3" >
+                       <select class="form-control" id="selectMateria7" formControlName="Materia7">
+                       <option *ngFor="let path of paths | async" value="{{path.materia}}_{{path.key}}">{{ path.materia }}</option>
+
+                       </select>
+                   </div>
+                   <div class="col-md-3" >
+                        <select class="form-control" id="selectpathProfMateria7" formControlName="pathProfMateria7">
+                        <option *ngFor="let professor of usuarios | async" [value]="professor.key">{{ professor.name }}</option>
+                        </select>
+                   </div>
+                 </div>
+                <div class="form-group">
+                  <input type="password" class="form-control"  placeholder="Password" formControlName="password" required>
+                </div>
+                <button type="button" class="btn btn-secondary" (click)="ResetForm()">Reset Formulário</button>
+                 <!-- <button type="button" class="btn btn-success" [disabled]="signupForm.invalid">Cadastrar</button>-->
+                <button type="submit" class="btn btn-lg btn-success" >Cadastrar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

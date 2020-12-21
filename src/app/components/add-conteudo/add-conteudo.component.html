@@ -1,0 +1,83 @@
+<p>
+    <div style="background-color:#e2eff7; width: 100%; text-align: center; margin-top:70px;">
+    <img class="logo" style="background:  #e2eff7; width: 30%;"  src="../assets/img/Login.jpg" /></div>
+    <br>
+    <div><h2>Cadastrar Disciplina </h2>
+    </div>
+      <form [formGroup]="subjectForm" (ngSubmit)="salvarDisciplina()">
+        <div class="form-group">
+          <label for="selectPeriod">Curso</label>
+          <select class="form-control" id="selectCurso" formControlName="curso">
+            <option value="Administração">Administração</option>
+            <option value="Análise e desenvolvimento de sistemas">Análise e desenvolvimento de sistemas</option>
+            <option value="Ciências Biológicas">Ciências Biológicas</option>
+            <option value="Educação Física Bacharelado">Educação Física Bacharelado</option>
+            <option value="Emfermagem">Enfermagem</option>
+            <option value="Estética e Cosmética">Estética e Cosmética</option>
+            <option value="Farmácia">Farmácia</option>
+            <option value="Fisioterapia">Fisioterapia</option>
+            <option value="Gastronomia">Gastronomia</option>
+            <option value="Matemática">Matemática</option>
+            <option value="Odontologia">Odontologia</option>
+            <option value="Psicologia">Psicologia</option>
+            <option value="Pedagogia">Pedagogia</option>
+            <option value="Redes de Computadores">Redes de Computadores</option>
+            <option value="Serviço Soc">Serviço Social</option>
+            <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="selectPeriod">Periodo</label>
+          <select class="form-control" id="selectPeriod" formControlName="periodo">
+            <option type="text" value="Primeiro">1º Período</option>
+            <option value="Segundo">2º Período</option>
+            <option value="Terceiro">3º Período</option>
+            <option value="Quarto">4º Período</option>
+            <option value="Quinto">5º Período</option>
+            <option value="Sexto">6º Período</option>
+            <option value="Setimo">7º Período</option>
+            <option value="Oitavo">8º Período</option>
+            <option value="Nono">9º Período</option>
+            <option value="Decimo">10º Período</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="materiaInput">Disciplina</label>
+          <input type="text" class="form-control" formControlName="materia"
+            placeholder="Nome da disciplina">
+        </div>
+        <div class="button-group">
+          <button type="button" style="float: right;" class="btn btn-danger" (click)="cancelar()"> Cancelar </button>
+          <button type="submit"  style="float: right;" class="btn btn-success" [disabled]="!subjectForm.valid"> Cadastrar </button>
+        </div>
+        <br>
+      </form>
+      <br>
+      <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col" style="text-align:center">Nome do Curso</th>
+              <th scope="col" style="text-align:center">Nome Período</th>
+              <th scope="col" style="text-align:center">Matéria</th>
+              <th scope="col" style="text-align:center">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let arquivo of paths | async">
+              <td style="text-align:center">{{arquivo.curso}}</td>
+            <td style="text-align:center">{{arquivo.periodo}}</td>
+            <td style="text-align:center">{{arquivo.materia}}</td>
+
+            <td style="text-align:center">
+              <button  type="button" style="float: right;" class="btn btn-danger" color="dark" outline icon-only (click)="delete(arquivo)">Deletar</button>
+              <button  type="button" style="float: right;" class="btn btn-warning" outline icon-only (click)="editProject(arquivo)">Editar</button>
+
+            </td>
+
+
+
+
+          </tr>
+        </tbody>
+      </table>
+

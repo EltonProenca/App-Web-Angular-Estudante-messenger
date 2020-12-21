@@ -1,0 +1,81 @@
+<section id="books" class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div style="background-color: #e2eff7; width: 100%; height: 100%; text-align: center; background-color:#e2eff7">
+        <img class="logo" src="../assets/img/Login2.png"/>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="isLogged">
+      <h2> {{curso}}</h2>
+  </div>
+
+  <div class="card text-left" *ngIf="AdminLogged">
+      <ul class="list-group"   style="float: right;">
+          <li class="list-group-item "  style="float: right;"style="float: right;" >Adicionar Disciplina
+            <button type="button" style="float: right;" (click)=" irCadastroDisciplinas()" class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">Registrar Usuários
+            <button type="button" style="float: right;" (click)="irRegister()"  class="btn btn-success">Acessar</button>
+          </li>
+     </ul>
+  </div>
+<div class="card text-left" >
+    <div class="card-body">
+  <div *ngIf="usuarioLogged">
+  <div class="card text-left" *ngIf="isLogged">
+      <ul class="list-group"   style="float: right;">
+          <li class="list-group-item "  style="float: right;"style="float: right;" >{{materia0}}
+            <button type="button" style="float: right;" (click)="setPath0() " class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia1}}
+            <button type="button" style="float: right;" (click)="setPath1() "  class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia2}}
+            <button type="button" style="float: right;" (click)="setPath2() "  class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia3}}
+            <button type="button" style="float: right;" (click)="setPath3() "  class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia4}}
+            <button type="button" style="float: right;" (click)="setPath4() "  class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia5}}
+            <button type="button" style="float: right;" (click)="setPath5() "  class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia6}}
+            <button type="button" style="float: right;" (click)="setPath6() "   class="btn btn-success">Acessar</button>
+          </li>
+          <li class="list-group-item ">{{materia7}}
+            <button type="button" style="float: right;" (click)="setPath7() "  class="btn btn-success">Acessar</button>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="card text-left" *ngIf="isLogged">
+      <div class="card text-left" *ngIf="!AdminLogged">
+          <ul class="list-group"   style="float: right;">
+              <li class="list-group-item "  style="float: right;"style="float: right;" >Acessar Disciplinas
+                <button type="button" style="float: right;" (click)=" getUser2()  " class="btn btn-success">Acessar</button>
+              </li>
+             </ul>
+      </div>
+      <div class="card text-left" *ngIf="!AdminLogged">
+          <ul class="list-group"   style="float: right;">
+              <li class="list-group-item "  style="float: right;"style="float: right;" >Acesso restrito
+                <button type="button" style="float: right;" (click)=" getUser()  " class="btn btn-success">Acessar</button>
+              </li>
+             </ul>
+      </div>
+    </div>
+  </div>
+    <div class="card-footer text-muted card text-center">
+        By Elton Proença Lima
+      </div>
+</div>
+</section>

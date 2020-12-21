@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:#4d71b0">
+  <a class="navbar-brand" routerLink="/">Controle Acadêmico </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="message/message" style="color:white">Mensagens
+          </a>
+       </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+
+       <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/user/profile">Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLogged">
+        <a class="nav-link btn btn-success" routerLink="/user/login" style="color:white">Entrar
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged">
+        <a href="#" class="nav-link btn btn-danger" (click)="onLogout()"style="color:white">Sair
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

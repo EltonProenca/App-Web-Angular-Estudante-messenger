@@ -1,0 +1,31 @@
+<section id="login" class="mb-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+        <div class="card_login" >
+          <div class="card" style="background: #e2eff7">
+            <div class="card-body text-center">
+              <form #formLogin="ngForm" (submit)="onLogin()">
+                  <div style="background:  #e2eff7;">
+                      <img style="background:  #e2eff7; width: 60%;" src="../assets/img/Login.jpg"/>
+                    </div><br>
+                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError" style="color:black">Login</h1>
+                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                  Something is wrong!
+                </div>
+                <p style="color:black; text-align: initial; font-size: 12px;">Mesmo Login App e Web</p> <div class="form-group">
+                  <input [(ngModel)]="email" type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <input [(ngModel)]="password" type="password" id="password" name="password" class="form-control" placeholder="Senha" required>
+                </div>
+                <button type="submit" class="btn btn-lg btn-success btn-block">Entrar</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

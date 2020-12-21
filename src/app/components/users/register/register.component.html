@@ -1,0 +1,101 @@
+<section id="login" class="mb-5 mt-5">
+  <div class="container">
+    <div  >
+      <div >
+        <div  >
+          <div class="card" style="background: #e2eff7">
+            <div class="card-body text-center">
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+                  <div style="background:  #e2eff7;">
+                      <img style="background:  #e2eff7; width: 30%;" src="../assets/img/Login.jpg"/>
+                    </div><br>
+                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError" style="color:black">Cadastro de usuários</h1>
+                <div class="alert alert-danger" role="alert" *ngIf="isError">
+                </div>
+                <div  class="card text-left">
+                <ul class="list-group" style="float: right;">
+                    <li class="list-group-item "  style="float: right;" > Cadastar Aluno
+                      <button type="button" style="float: right;"  class="nav-link" routerLink="/users/addAluno" class="btn btn-success">Acessar</button>
+                    </li>
+                    <li class="list-group-item " style="float: left;">Cadastrar Professor
+                      <button type="button" style="float: right;"  class="nav-link" routerLink="/users/addProfessor" class="btn btn-success">Acessar</button>
+                    </li>
+                  </ul>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     <br>
+    <div class="card" style="background: #e2eff7">
+        <div style="text-align:center">
+            <ul class="nav">
+              <li>
+                <span><h5>Professores Cadastrados</h5></span>
+              </li>
+            </ul>
+          </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:center">Nome</th>
+            <th scope="col" style="text-align:center">Usuário</th>
+            <th scope="col" style="text-align:center">email</th>
+            <th scope="col" style="text-align:right">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let arquivo of professores | async " >
+            <td style="text-align:center">{{arquivo.name}}</td>
+            <td style="text-align:center">{{arquivo.usuario}}</td>
+            <td style="text-align:center">{{arquivo.email}}</td>
+            <button  type="button" class="btn btn-warning"  style="float: right;" (click)=" editarProfessor(arquivo)">Editar
+            </button>
+            <button  type="button" class="btn btn-danger"  style="float: right;" (click)="deleteUser(arquivo)">Excluir
+            </button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="background: #e2eff7">
+      <div style="text-align:center">
+          <ul class="nav">
+            <li>
+              <span><h5>Alunos Cadastrados</h5></span>
+            </li>
+          </ul>
+        </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align:center">Nome</th>
+          <th scope="col" style="text-align:center">Usuário</th>
+          <th scope="col" style="text-align:center">email</th>
+          <th scope="col" style="text-align:right">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let arquivo of alunos | async " >
+          <td style="text-align:center">{{arquivo.name}}</td>
+          <td style="text-align:center">{{arquivo.usuario}}</td>
+          <td style="text-align:center">{{arquivo.email}}</td>
+          <button  type="button" class="btn btn-warning"  style="float: right;" (click)=" editarAluno(arquivo)">Editar
+          </button>
+          <button  type="button" class="btn btn-danger"   style="float: right;" (click)="deleteUser(arquivo)">Excluir
+          </button>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    </div>
+  </div>
+
+
+
+
+
+</section>
+

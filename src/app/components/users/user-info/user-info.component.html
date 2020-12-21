@@ -1,0 +1,35 @@
+<p>
+
+
+
+<div style="background-color:#e2eff7; width: 100%; height: 150%; text-align: center; margin-top:70px;">
+  <!--<img class="logo" src="../assets/img/Login.jpg" /></div><br>-->
+<div><h2>Usuário</h2>
+  <div style="text-align:center">
+
+<div *ngIf="user" class = "row">
+    <div class = "col">
+      <div>
+          <ngx-avatar [src]="user.photo || 'assets/images/no-photo.jpg'" [ngClass]="{'custom-background': isMenu}" [round]="true" >
+
+          </ngx-avatar>
+      </div>
+      <div>
+
+        <!--<label> Aluno: {{ user.name }} </label>-->
+
+        <h2 text-center>{{user.usuario}}: {{ user.name }}</h2>
+        <p text-center>RA:{{ user.ra }}</p>
+        </div>
+
+    </div>
+
+
+
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+
